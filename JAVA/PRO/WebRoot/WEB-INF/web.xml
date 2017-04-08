@@ -4,4 +4,13 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+	  <servlet-name>Invoke</servlet-name>
+	  <servlet-class>main.com.pro.InvokeInterFace.InvokeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>Invoke</servlet-name>
+	  <url-pattern>/Invoke</url-pattern>
+  </servlet-mapping>
 </web-app>
