@@ -6,9 +6,6 @@ import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,18 +22,26 @@ public class AbstractServlet extends HttpServlet{
 	
 	private HttpServletResponse response;
 	
-	private ServletOutputStream outstream;
-	
 	private PrintWriter writer;
 	
-	private Map FormData;
+	private Map<String,Object> FormData;
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response)
+	protected final void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		initContext(request,response);
+		doDispacher(request,response,FormData);
+	}
+
+	protected void doDispacher(HttpServletRequest request,
+			HttpServletResponse response,Map<String,Object> Data){
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void initContext(HttpServletRequest request, HttpServletResponse response)
+			throws IOException{
 		this.request = request;
 		this.response = response;
-		this.outstream = response.getOutputStream();
 		this.writer = response.getWriter();
 		String data = request.getParameter("data");
 		this.FormData = JsonTool.ToMap(data);
@@ -49,7 +54,6 @@ public class AbstractServlet extends HttpServlet{
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
 	}
 
 	public HttpServletRequest getRequest() {
@@ -58,10 +62,6 @@ public class AbstractServlet extends HttpServlet{
 
 	public HttpServletResponse getResponse() {
 		return response;
-	}
-
-	public ServletOutputStream getOutstream() {
-		return outstream;
 	}
 
 	public PrintWriter getWriter() {
