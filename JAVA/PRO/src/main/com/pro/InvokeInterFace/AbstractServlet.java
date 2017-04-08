@@ -24,7 +24,7 @@ public class AbstractServlet extends HttpServlet{
 	
 	private PrintWriter writer;
 	
-	private Map<String,Object> FormData;
+	private Map FormData;
 
 	@Override
 	protected final void service(HttpServletRequest request, HttpServletResponse response)
@@ -34,7 +34,7 @@ public class AbstractServlet extends HttpServlet{
 	}
 
 	protected void doDispacher(HttpServletRequest request,
-			HttpServletResponse response,Map<String,Object> Data){
+			HttpServletResponse response,Map Data){
 	}
 	
 	@SuppressWarnings("unchecked")
