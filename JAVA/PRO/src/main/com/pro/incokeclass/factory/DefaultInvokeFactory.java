@@ -1,6 +1,5 @@
 package main.com.pro.incokeclass.factory;
 
-import main.com.pro.incokeclass.InvokeFactory;
 import main.com.pro.incokeclass.InvokeSubject;
 
 public class DefaultInvokeFactory implements InvokeFactory{
@@ -20,7 +19,7 @@ public class DefaultInvokeFactory implements InvokeFactory{
 	
 
 	@Override
-	public InvokeSubject getinInvokeSubject(String classname) throws ClassNotFoundException {
+	public InvokeSubject getInvokeSubject(String classname) throws ClassNotFoundException {
 		Class<InvokeSubject> clas = (Class<InvokeSubject>) classLoader.loadClass(classname);
 		return null;
 	}
