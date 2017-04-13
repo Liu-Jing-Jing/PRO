@@ -8,7 +8,7 @@ public class DefaultInvokeFactory implements InvokeFactory{
 	
 	private DefaultInvokeFactory(ClassLoader classLoader) {
 		if(classLoader == null){
-			this.classLoader = this.getClass().getClassLoader();
+			this.classLoader = ClassLoader.getSystemClassLoader();
 		}
 		this.classLoader = classLoader;
 	}

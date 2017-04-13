@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Config namespace="">
+<Config namespace="265">
 
 	<Invokes>
-		<Invoke id="" class="com.pro.InvokeInterFace.InvokeServlet" />
-		<Invoke id="" class="com.pro.InvokeInterFace.InvokeServlet" />
-		<Invoke id="" class="com.pro.InvokeInterFace.InvokeServlet" />
+		<Invoke id="212" class="com.pro.InvokeInterFace.InvokeServlet" />
+		<Invoke id="3321" class="com.pro.InvokeInterFace.InvokeServlet" />
+		<Invoke id="3134" class="com.pro.InvokeInterFace.InvokeServlet" />
 	</Invokes>
 	
 	
