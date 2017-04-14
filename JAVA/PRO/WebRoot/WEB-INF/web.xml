@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>PRO</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+	  <servlet-name>Invoke</servlet-name>
+	  <servlet-class>main.com.pro.InvokeInterFace.InvokeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>Invoke</servlet-name>
+	  <url-pattern>/Invoke</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+	  <filter-name>ErrorFilter</filter-name>
+	  <filter-class>main.com.pro.filter.ExceptionFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+	  <filter-name>ErrorFilter</filter-name>
+	  <url-pattern>/</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+	  <filter-name>JsonFilter</filter-name>
+	  <filter-class>main.com.pro.filter.JsonConvertFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+	  <filter-name>JsonFilter</filter-name>
+	  <url-pattern>/</url-pattern>
+  </filter-mapping>
+  
+  
+</web-app>
