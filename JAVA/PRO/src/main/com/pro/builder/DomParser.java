@@ -1,18 +1,17 @@
 package main.com.pro.builder;
 
 import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import main.com.pro.config.Configration;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class DomParser {
-	
-	private DomBuilder builder;
 	
 	private Configration config;
 	
@@ -22,54 +21,31 @@ public class DomParser {
 	
 	
 	public DomParser(DomBuilder builder,Configration config) {
-		this.builder = builder;
 		this.config = config;
 		this.doc = builder.getDocument();
 		XPathFactory factory = XPathFactory.newInstance();
 	    this.xpath = factory.newXPath();
-		this.loadConfig();
 	}
 
 	
-	private void loadConfig() {
-		Node node = parseNameSpace();
-		NamedNodeMap attr = node.getAttributes();
-		
-		
-	}
-
-
-	private void parseInvokeClass() {
-		
-	}
-
-
-	private Node parseNameSpace() {
-		NodeList list = parseElement("Config");
-		if(list.getLength() > 1){
-			throw new RuntimeException("only one Config Element needed!");
+	public Configration start() throws XPathExpressionException{
+		NodeList node = evalNode("/Config");
+		for (int i = 0; i < node.getLength(); i++) {
+			System.out.println(node.item(i));
 		}
-		return list.item(0);
-	}
-	
-
-	private void parseAttr() {
-		
-		
-	}
-
-	
-	
-	
-	
-	
-	private NodeList parseElement(String elementName) {
-		NodeList list = doc.getElementsByTagName(elementName);
-		return list;
+		return config;
 	}
 	
 	
+	public NodeList evalNode(String name) throws XPathExpressionException{
+		NodeList node  = (NodeList) xpath.evaluate(name, doc, XPathConstants.NODESET);
+		return node;
+	}
 	
+	
+	public String evalAttr(String attrName,Object node) throws XPathExpressionException{
+		return String.valueOf(xpath.evaluate("@"+attrName,node));
+	}
 	
 	
 
